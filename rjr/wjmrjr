@@ -1,7 +1,30 @@
+local old
+old = hookmetamethod(game:GetService("StarterGui"), "__namecall", newcclosure(function(self, ...)
+        local method = getnamecallmethod()
+        local args = {...}
+        if method == "SetCore" and args[1] == "SendNotification" then
+            local options = args[2]
+            if type(options) == "table" and 
+               tostring(options.Title) == "人挤人脚本" and 
+               tostring(options.Text) == "kismile制作" 
+            then
+                local modifiedOptions = table.clone(options)
+                modifiedOptions.Text = "1"
+            end
+        end
+     return old(self, ...)
+end))
+
+game:GetService("StarterGui"):SetCore("SendNotification",{
+	Title = "人挤人脚本",
+	Text = "kismile制作",
+	Duration = 5;
+})
+
 local Players = game:GetService("Players")  
 local workspace = game:GetService("Workspace")  
 local Player = Players.LocalPlayer  
-local ui =loadstring(game:HttpGet("https://raw.githubusercontent.com/kismile36/xing/refs/heads/main/rjr/ui.lua"))()
+local ui = loadstring(game:HttpGet("https://raw.githubusercontent.com/kismile36/xing/refs/heads/main/rjr/ui.lua"))()
 local win = ui:new("人挤人中心")
 local UITab1 = win:Tab("公告",'7734068321')
 local UITab2 = win:Tab("超级无敌脚本",'7734068321')
