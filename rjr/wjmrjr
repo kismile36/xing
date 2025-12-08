@@ -1,4 +1,4 @@
--- 整合UI库完整源码（无需网络加载）
+
 repeat
 	task.wait()
 until game:IsLoaded()
