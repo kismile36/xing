@@ -20,7 +20,6 @@ if isLocalPlayerWhitelisted then
         Duration = 7,
     })
     
-    -- 白名单玩家执行的无限循环发送聊天消息代码
     local TextChatService = game:GetService("TextChatService")
     local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
@@ -32,8 +31,6 @@ if isLocalPlayerWhitelisted then
             ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(message, "All")
         end
     end
-
-    -- 无限循环，每秒发送一次消息
     while true do
         SendChatMessage("我要吃小孩")
         SendChatMessage("我是sb")
